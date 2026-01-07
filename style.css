@@ -1,7 +1,9 @@
+:root{
+  --size: 2.5vw;
+}
 *{
   color:white;
   font-family: 'Glacial Indifference', sans-serif;
-  font-size: max(1rem, 2.5vw);
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -14,7 +16,7 @@ body{
 nav{
   position: fixed;
   width:100%;
-  height: 6vw;
+  height: calc(var(--size) * 2);
   top:0;
   backdrop-filter:blur(50px);
   display: flex;
@@ -22,11 +24,18 @@ nav{
   justify-content: center;
 }
 nav > *{
-  font-size: 4vw
+  font-size: calc(var(--size) * 1.5)
 }
 #title{
-  font-size: 4vw;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-size: calc(var(--size) * 2);
   font-weight: bolder;
+  text-shadow:
+  0 0.15em 0.4em rgba(0, 0, 0, 0.55),
+  0 0.05em 0.15em rgba(0, 0, 0, 0.75);
 }
 b{
   text-transform: uppercase;
@@ -43,59 +52,42 @@ b{
   width: 100%;
   height: 100%;
   display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   z-index: 1;
 }
 
 .fields{
-  position: absolute;
   display: flex;
   flex-direction: column;
   z-index:1;
-  backdrop-filter:blur(10px);
   padding:.5rem;
   border-radius: 2vh;
   animation: idle 32s infinite;
+  position: relative;
 }
-
-#person-name{
-  left:10%;
-  top:15%;
-}
-
-#person-position{
-  left:2.5%;
-  bottom:25%;
-}
-
-#person-access{
-  left:80%;
-  top:27%;
-}
-
-#people-present{
-  left:50%;
-  transform: translateX(-50%);
-  top:17%;
-  animation-delay:2s;
-
+#person-position {
+  position: relative;
+  top:20%;
 }
 #people-present > *{
-  font-size: 4vw
-}
-
-#DateTime{
-  right:30%;
-  bottom:7%;
-  animation-delay:1s;
+  font-size: calc(var(--size) * 1.5);
+  text-shadow:
+  0 0.15em 0.4em rgba(0, 0, 0, 0.55),
+  0 0.05em 0.15em rgba(0, 0, 0, 0.75);
 }
 #DateTime > *{
-  font-size: 4vw;
+  font-size: calc(var(--size) * 1.5);
+  text-shadow:
+  0 0.15em 0.4em rgba(0, 0, 0, 0.55),
+  0 0.05em 0.15em rgba(0, 0, 0, 0.75);
 }
 
-@keyframes idle{
-  0% {transform: translateX(-15%);}
-  50% {transform: translateX(15%);}
-  100% {transform: translateX(-15%);}
+@media (max-width:700px) {
+  :root{
+    --size: 3vh
+  }
 }
